@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="atmmachinejava">
+  <ClassDiagramComponents>
+    <Class name="Account" package="atmmachinejava" visibility="public" xPosition="25.0" yPosition="15.0">
+      <Fields>
+        <Field name="accountNo" type="int" visibility="private"/>
+        <Field name="balance" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="int" name="pin"/>
+          <Argument type="int" name="limit"/>
+          <Argument type="double" name="balance"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="validate" returnType="boolean" visibility="public">
+          <Argument type="int" name="inputAccountNo"/>
+          <Argument type="int" name="inputPin"/>
+        </Method>
+        <Method name="getLimit" returnType="int" visibility="public"/>
+        <Method name="getBalance" returnType="double" visibility="public"/>
+        <Method name="getAccountNo" returnType="int" visibility="public"/>
+        <Method name="getPin" returnType="int" visibility="public"/>
+        <Method name="credit" returnType="void" visibility="public">
+          <Argument type="double" name="amount"/>
+        </Method>
+        <Method name="debit" returnType="void" visibility="public">
+          <Argument type="double" name="amount"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ATM" package="atmmachinejava" visibility="public" xPosition="475.0" yPosition="425.0">
+      <Fields>
+        <Field name="balance" type="double" visibility="private"/>
+        <Field name="accountNo" type="int" visibility="private"/>
+        <Field name="account" type="Account" visibility="private"/>
+        <Field name="WITHDRAWAL" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DEPOSIT" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DISPLAY_BALANCE" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CHANGE_PIN" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="EXIT" type="int" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="validate" returnType="boolean" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="BankData" package="atmmachinejava" visibility="public" xPosition="25.0" yPosition="416.0">
+      <Fields>
+        <Field name="accounts" type="Account[]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="bankNo"/>
+          <Argument type="String" name="bankName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAccount" returnType="Account" visibility="private">
+          <Argument type="int" name="accountNo"/>
+        </Method>
+        <Method name="authenticateUser" returnType="boolean" visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="int" name="pin"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ChangePIN" package="atmmachinejava" visibility="public" xPosition="769.0" yPosition="15.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="Account" name="account"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="transaction" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="Customer" package="atmmachinejava" visibility="public" xPosition="1168.0" yPosition="29.0">
+      <Fields>
+        <Field name="accountNo" type="int" visibility="package"/>
+        <Field name="name" type="String" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Deposit" package="atmmachinejava" visibility="public" xPosition="441.0" yPosition="15.0">
+      <Fields>
+        <Field name="amount" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="Account" name="account"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="transaction" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="DisplayBalance" package="atmmachinejava" visibility="public" xPosition="759.0" yPosition="229.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="Account" name="account"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="transaction" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="Transaction" package="atmmachinejava" visibility="public" xPosition="430.0" yPosition="200.0">
+      <Fields>
+        <Field name="accountNo" type="int" visibility="package"/>
+        <Field name="account" type="Account" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="Account" name="account"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAccountNo" returnType="int" visibility="package"/>
+        <Method name="transaction" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="Withdrawal" package="atmmachinejava" visibility="public" xPosition="772.0" yPosition="425.0">
+      <Fields>
+        <Field name="amount" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="accountNo"/>
+          <Argument type="Account" name="account"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="transaction" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="account" source="atmmachinejava.Transaction" target="atmmachinejava.Account" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="atmmachinejava.Withdrawal" target="atmmachinejava.Transaction"/>
+    <IsRelation name="is" source="atmmachinejava.ChangePIN" target="atmmachinejava.Transaction"/>
+    <UseRelation source="atmmachinejava.BankData" target="atmmachinejava.Account" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="account" source="atmmachinejava.ATM" target="atmmachinejava.Account" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="atmmachinejava.DisplayBalance" target="atmmachinejava.Transaction"/>
+    <IsRelation name="is" source="atmmachinejava.Deposit" target="atmmachinejava.Transaction"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
