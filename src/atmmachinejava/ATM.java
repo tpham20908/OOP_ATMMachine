@@ -9,7 +9,7 @@ public class ATM
 {
   private boolean userAuthenticated;
   private int currentAccountNo;
-  private BankData bankData;
+  private final BankData bankData;
   
   // constants corresponding to main menu options
   private static final int WITHDRAWAL = 1;
@@ -27,6 +27,7 @@ public class ATM
   
   public void run()
   {
+    // Program has to be terminated manually
     while (true)
     {
       while (!userAuthenticated)
@@ -39,7 +40,7 @@ public class ATM
       performTransaction();
       userAuthenticated = false;
       
-      System.out.println("Thank you for using ATM banking!".toUpperCase());
+      System.out.println("THANK YOU FOR USING ATM BANKING!");
     }
   }
   /**
@@ -50,7 +51,7 @@ public class ATM
   {
     int count = 0;
     boolean checkAccount = false;
-    int accountNoInput = 0, pinInput = 0;
+    int accountNoInput = 0, pinInput;
     Scanner input = new Scanner(System.in);
     
     while (!checkAccount)
@@ -85,7 +86,7 @@ public class ATM
       {
         case WITHDRAWAL:
           currentTransaction = new Withdrawal(currentAccountNo, bankData);
-          currentTransaction.transaction();
+          ((Withdrawal)currentTransaction).transaction();
           break;
         case DEPOSIT:
           currentTransaction = new Deposit(currentAccountNo, bankData);

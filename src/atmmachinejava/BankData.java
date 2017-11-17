@@ -40,15 +40,6 @@ public class BankData
     return userAccount.validate(pin);
   }
   
-  public boolean validateUser(int accountNo, int pin)
-  {
-    Account userAccount = getAccount(accountNo);
-    if (userAccount != null)
-      return userAccount.validate(pin);
-    else
-      return false;
-  }
-  
   public double getBalance(int accountNo)
   {
     return getAccount(accountNo).getBalance();
