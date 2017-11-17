@@ -50,15 +50,15 @@ public class ATM
   public void authenticatedUser() 
   {
     int count = 0;
-    boolean checkAccount = false;
+    boolean checkedAccount = false;
     int accountNoInput = 0, pinInput;
     Scanner input = new Scanner(System.in);
     
-    while (!checkAccount)
+    while (!checkedAccount)
     {
       System.out.print("Enter your Account number: ");
       accountNoInput = input.nextInt();
-      checkAccount = bankData.validateAccountNo(accountNoInput);
+      checkedAccount = bankData.validateAccountNo(accountNoInput);
     }
     
     while (!userAuthenticated && count < 3)
@@ -86,7 +86,7 @@ public class ATM
       {
         case WITHDRAWAL:
           currentTransaction = new Withdrawal(currentAccountNo, bankData);
-          ((Withdrawal)currentTransaction).transaction();
+          currentTransaction.transaction();
           break;
         case DEPOSIT:
           currentTransaction = new Deposit(currentAccountNo, bankData);

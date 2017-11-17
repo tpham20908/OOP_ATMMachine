@@ -13,9 +13,9 @@ public class BankData
   public BankData() 
   {
     accounts = new Account[3];
-    accounts[0] = new Account(1234, 4321, 500, 2500.80);
-    accounts[1] = new Account(12345, 54321, 400, 1500.50);
-    accounts[2] = new Account(123456, 654321, 1000, 500.0);
+    accounts[0] = new Account(1234, 4321, 500, 2575.80);
+    accounts[1] = new Account(2345, 5432, 400, 1543.50);
+    accounts[2] = new Account(3456, 6543, 800, 550.30);
   }
   
   public Account getAccount(int accountNo)
