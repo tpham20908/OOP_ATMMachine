@@ -10,30 +10,45 @@ public class BankData
 {
   private Account[] accounts;
   
-  public BankData(int bankNo, String bankName, String address) 
+  public BankData() 
   {
     accounts = new Account[3];
     accounts[0] = new Account(1234, 4321, 500, 2500.80);
     accounts[1] = new Account(12345, 54321, 400, 1500.50);
-    accounts[0] = new Account(123456, 654321, 1000, 500.0);
+    accounts[2] = new Account(123456, 654321, 1000, 500.0);
   }
   
-  private Account getAccount(int accountNo)
+  public Account getAccount(int accountNo)
   {
     for (Account account : accounts)
     {
-      if (account.getAccountNo() == accountNo) 
+      if (account.getAccountNo() == accountNo)
         return account;
     }
     return null;
   }
   
-  public boolean authenticateUser(int accountNo, int pin)
+  public boolean validateUser(int accountNo, int pin)
   {
     Account userAccount = getAccount(accountNo);
     if (userAccount != null)
-      return userAccount.validate(accountNo, pin);
+      return userAccount.validate(pin);
     else
       return false;
+  }
+  
+  public double getBalance(int accountNo)
+  {
+    return getAccount(accountNo).getBalance();
+  }
+  
+  public int getLimit(int accountNo)
+  {
+    return getAccount(accountNo).getLimit();
+  }
+  
+  public int getPin(int accountNo)
+  {
+    return getAccount(accountNo).getPin();
   }
 }

@@ -4,20 +4,26 @@
  */
 package atmmachinejava;
 
-public class Transaction {
+public abstract class Transaction
+{
   int accountNo;
-  Account account;
+  BankData bankData;
   
-  public Transaction(int accountNo, Account account) {
+  public Transaction(int accountNo, BankData bankData) 
+  {
     this.accountNo = accountNo;
-    this.account = account;
+    this.bankData = bankData;
   }
   
-  int getAccountNo() {
+  public int getAccountNo() 
+  {
     return accountNo;
   }
   
-  void transaction() {
-    
+  public BankData getBankData() 
+  {
+    return bankData;
   }
+  
+  abstract void transaction();
 }

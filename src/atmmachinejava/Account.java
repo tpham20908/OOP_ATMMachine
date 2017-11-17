@@ -20,9 +20,9 @@ public class Account
     this.balance = balance;
   }
   
-  public boolean validate(int inputAccountNo, int inputPin) 
+  public boolean validate(int inputPin)
   {
-    return (inputAccountNo == accountNo && inputPin == pin);
+    return (inputPin == pin);
   }
   
   public int getLimit() 
@@ -43,16 +43,5 @@ public class Account
   public int getPin() 
   {
     return pin;
-  }
-  
-  public void credit(double amount) 
-  {
-    balance += amount;
-  }
-  
-  public void debit(double amount)
-  {
-    limit -= amount;
-    balance -= amount;
   }
 }
