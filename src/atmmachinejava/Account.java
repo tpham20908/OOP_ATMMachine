@@ -44,4 +44,16 @@ public class Account
   {
     return pin;
   }
+
+  public void setPin(int pin) {
+    this.pin = pin;
+  }
+
+  public void setLimit(int limit) {
+    this.limit = limit;
+  }
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
 }

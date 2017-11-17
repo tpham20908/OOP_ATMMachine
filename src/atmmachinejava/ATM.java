@@ -10,6 +10,7 @@ public class ATM
   private boolean userAuthenticated;
   private int currentAccountNo;
   private final BankData bankData;
+  Transaction currentTransaction;
   
   // constants corresponding to main menu options
   private static final int WITHDRAWAL = 1;
@@ -77,7 +78,7 @@ public class ATM
   
   public void performTransaction() 
   {
-    Transaction currentTransaction = null;
+    Account currentAccount= bankData.getAccount(currentAccountNo);
     boolean userExited = false;
     while (!userExited)
     {
@@ -85,19 +86,19 @@ public class ATM
       switch (menuSelection)
       {
         case WITHDRAWAL:
-          currentTransaction = new Withdrawal(currentAccountNo, bankData);
+          currentTransaction = new Withdrawal(currentAccountNo, currentAccount);
           currentTransaction.transaction();
           break;
         case DEPOSIT:
-          currentTransaction = new Deposit(currentAccountNo, bankData);
+          currentTransaction = new Deposit(currentAccountNo, currentAccount);
           currentTransaction.transaction();
           break;
         case DISPLAY_BALANCE:
-          currentTransaction = new DisplayBalance(currentAccountNo, bankData);
+          currentTransaction = new DisplayBalance(currentAccountNo, currentAccount);
           currentTransaction.transaction();
           break;
         case CHANGE_PIN:
-          currentTransaction = new ChangePIN(currentAccountNo, bankData);
+          currentTransaction = new ChangePIN(currentAccountNo, currentAccount);
           currentTransaction.transaction();
           break;
         case EXIT:

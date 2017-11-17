@@ -7,20 +7,20 @@ import java.util.Scanner;
 
 public class Deposit extends Transaction {
   
-  public Deposit(int accountNo, BankData bankData) 
+  public Deposit(int accountNo, Account account) 
   {
-    super(accountNo, bankData);
+    super(accountNo, account);
   }
   
-  BankData currentBankData = getBankData();
-  double currentBalance = currentBankData.getBalance(getAccountNo());
-  int currentLimit = currentBankData.getLimit(getAccountNo());
+  double currentBalance = account.getBalance();
+  int currentLimit = account.getLimit();
   
   @Override
   void transaction() 
   {
     int amount = chooseAmount();
     currentBalance += amount;
+    account.setBalance(currentBalance);
     System.out.println("You have deposited $" + amount
       + "\nYour current balance is $" + currentBalance);
   }

@@ -7,12 +7,13 @@ package atmmachinejava;
 public abstract class Transaction
 {
   int accountNo;
+  Account account;
   BankData bankData;
   
-  public Transaction(int accountNo, BankData bankData) 
+  public Transaction(int accountNo, Account account) 
   {
     this.accountNo = accountNo;
-    this.bankData = bankData;
+    this.account = account;
   }
   
   public int getAccountNo() 

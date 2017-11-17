@@ -7,12 +7,11 @@ import java.util.Scanner;
 
 public class ChangePIN extends Transaction {
   
-  public ChangePIN(int accountNo, BankData bankData) {
-    super(accountNo, bankData);
+  public ChangePIN(int accountNo, Account account) {
+    super(accountNo, account);
   }
   
-  BankData currentBankData = getBankData();
-  int currentPin = currentBankData.getPin(getAccountNo());
+  int currentPin = account.getPin();
   
   @Override
   void transaction() 
@@ -36,7 +35,7 @@ public class ChangePIN extends Transaction {
         System.out.print("Re-enter your new PIN: ");
         newPin2 = input.nextInt();
       }
-      currentPin = newPin1;
+      account.setPin(newPin2);
       System.out.println("Your new PIN is successfully updated.");
     }
     else

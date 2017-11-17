@@ -6,14 +6,13 @@ package atmmachinejava;
 
 public class DisplayBalance extends Transaction {
 
-  public DisplayBalance(int accountNo, BankData bankData) {
-    super(accountNo, bankData);
+  public DisplayBalance(int accountNo, Account account) {
+    super(accountNo, account);
   }
   
   @Override
   void transaction() {
-    BankData currentBankData = getBankData();
-    double currentBalance = currentBankData.getBalance(getAccountNo());
+    double currentBalance = account.getBalance();
     System.out.println("******************************");
     System.out.println("Your currently balance is $" + currentBalance);
   }
