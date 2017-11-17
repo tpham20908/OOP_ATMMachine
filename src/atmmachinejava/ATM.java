@@ -31,7 +31,8 @@ public class ATM
     {
       while (!userAuthenticated)
       {
-        System.out.println("\nWelcome to ATM Banking!");
+        System.out.println("******************************");
+        System.out.println("Welcome to ATM Banking!");
         authenticatedUser();
       }
       System.out.println("Login successfully!");
@@ -39,7 +40,6 @@ public class ATM
       userAuthenticated = false;
       
       System.out.println("Thank you for using ATM banking!".toUpperCase());
-      System.out.println("******************************");
     }
   }
   /**
@@ -48,18 +48,30 @@ public class ATM
    */
   public void authenticatedUser() 
   {
+    int count = 0;
+    boolean checkAccount = false;
+    int accountNoInput = 0, pinInput = 0;
     Scanner input = new Scanner(System.in);
-    System.out.print("Enter your Account number: ");
-    int accountNoInput = input.nextInt();
-    System.out.print("Enter your PIN: ");
-    int pinInput = input.nextInt();
     
-    userAuthenticated = bankData.validateUser(accountNoInput, pinInput);
+    while (!checkAccount)
+    {
+      System.out.print("Enter your Account number: ");
+      accountNoInput = input.nextInt();
+      checkAccount = bankData.validateAccountNo(accountNoInput);
+    }
+    
+    while (!userAuthenticated && count < 3)
+    {
+      System.out.printf("Enter your PIN (%d attempts): ", 3-count);
+      pinInput = input.nextInt();
+      userAuthenticated = bankData.validatePin(accountNoInput, pinInput);
+      count++;
+    }
+    
     if (userAuthenticated)
       currentAccountNo = accountNoInput;
     else
-      System.out.println("Invalid Account Number or PIN. "
-              + "Please try again.");
+      System.out.println("Invalid PIN. Login failed!");
   }
   
   public void performTransaction() 
@@ -103,7 +115,7 @@ public class ATM
   private int selectMenu()
   {
     Scanner input = new Scanner(System.in);
-    System.out.println("\n******************************");
+    System.out.println("******************************");
     System.out.println("Main Menu".toUpperCase());
     System.out.println("1. Withdrawal");
     System.out.println("2. Deposit");

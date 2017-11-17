@@ -28,6 +28,18 @@ public class BankData
     return null;
   }
   
+  public boolean validateAccountNo(int accountNo)
+  {
+    Account userAccount = getAccount(accountNo);
+    return userAccount != null;
+  }
+  
+  public boolean validatePin(int accountNo, int pin)
+  {
+    Account userAccount = getAccount(accountNo);
+    return userAccount.validate(pin);
+  }
+  
   public boolean validateUser(int accountNo, int pin)
   {
     Account userAccount = getAccount(accountNo);
