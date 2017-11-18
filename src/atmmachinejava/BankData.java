@@ -4,8 +4,6 @@
  */
 package atmmachinejava;
 
-// don't need to use this class (line 35 is a bit redundant)
-// hard code new Account in ATM to test
 public class BankData 
 {
   private Account[] accounts;
@@ -13,6 +11,7 @@ public class BankData
   public BankData() 
   {
     accounts = new Account[3];
+    // (accountNo, PIN, limit, balance)
     accounts[0] = new Account(1234, 4321, 500, 2575.80);
     accounts[1] = new Account(2345, 5432, 400, 1543.50);
     accounts[2] = new Account(3456, 6543, 800, 550.30);

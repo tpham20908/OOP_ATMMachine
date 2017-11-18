@@ -25,10 +25,12 @@ public class ATM
     currentAccountNo = 0;
     bankData = new BankData();
   }
-  
+/**
+ * The keypad on ATM machine is supposed to only have number characters 0 to 9.
+ * The program has to be terminated manually
+ */  
   public void run()
   {
-    // Program has to be terminated manually
     while (true)
     {
       while (!userAuthenticated)
@@ -75,7 +77,10 @@ public class ATM
     else
       System.out.println("Invalid PIN. Login failed!");
   }
-  
+/**
+ * performTransaction() obtains currentAccountNo to perform its task
+ * after user logged in successfully from previous step
+ */  
   public void performTransaction() 
   {
     Account currentAccount= bankData.getAccount(currentAccountNo);
