@@ -23,8 +23,14 @@ public class ChangePIN extends Transaction {
     pinInput = input.nextInt();
     if (pinInput == currentPin)
     {
-      System.out.print("Enter your new PIN: ");
-      newPin1 = input.nextInt();
+      // pin must be exact 4 digits
+      do 
+      {
+        System.out.print("Enter your new PIN (must be 4 digits): ");
+        newPin1 = input.nextInt();
+      }
+      while (Integer.toString(newPin1).length() != 4);
+      
       System.out.print("Re-enter your new PIN: ");
       newPin2 = input.nextInt();
       while (newPin1 != newPin2)
